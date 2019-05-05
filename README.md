@@ -77,3 +77,48 @@ Signn a friend KEY :
 ```
 
 
+
+
+To sign a lot of keys:
+```bash
+
+
+#!/bin/bash
+
+KEYS=(
+"ED3873F5D3262722"
+"F3AD5C94A67F707E"
+"d4d8267b628a1bd8"
+"FABEEA09897258E5"
+"c336e0143a553b89"
+"80C4D6ADA138B2FC"
+"ea6c3728ea91c4af"
+"43F522CCB5AAF1BC"
+"BD8082810D59410B"
+"0187F247D3B4224A"
+"35CD23C10D498E23"
+"82B137F934DAAD6D"
+"E9D1484CE140BCAA"
+"772C2C5246A1E9C8"
+"FA0C35EA8AA299F1"
+"F19136E08F3480EC"
+"01DADC8F83DE2665"
+"ad5e2a5335ddc9a4"
+"bf46cae38411a2c1"
+"c943c722e731d20d"
+"6E550E18AA2080DC"
+"6E1EDD00F6D22B76"	
+)
+
+for KEY in "${KEYS[@]}"
+do
+
+	echo SIGN: "$KEY" 
+	gpg --recv-keys "$KEY"
+	gpg --sign-key  "$KEY"
+	gpg --send-key  "$KEY"
+	echo SIGN: "$KEY" Done. 
+
+done
+
+```
